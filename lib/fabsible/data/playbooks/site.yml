@@ -1,0 +1,23 @@
+- hosts:
+  - localhost
+  gather_facts: False
+  roles:
+  - exphost.instances
+  post_tasks:
+    - name: refresh inventory
+      meta: refresh_inventory
+
+- hosts:
+  - all
+  - localhost
+  gather_facts: False
+  roles:
+    - exphost.vars_merger
+    - exphost.default_filler
+    - exphost.provision
+
+- hosts:
+  - all
+  roles:
+    - exphost.common
+    - exphost.universal_installer

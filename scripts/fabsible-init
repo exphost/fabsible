@@ -1,0 +1,15 @@
+#!/usr/bin/env python
+import fabsible
+import sys
+import shutil
+import os
+
+if not os.path.exists("fabsible.cfg"):
+    shutil.copyfile(sys.prefix+"/fabsible/config/fabsible.cfg", "./fabsible.cfg")
+else:
+    sys.exit("ERROR: fabsible already initialized")
+
+dirs = ["roles","group_vars", "examples"]
+for dir in dirs:
+    if not os.path.exists(dir):
+        os.mkdir(dir)
