@@ -2,7 +2,10 @@ import setuptools
 from pathlib import Path
 
 def get_data_files():
-    return [ str(x) for x in Path('lib/fabsible/data').glob('**/*') if x.is_file() and '/.git/' not in str(x)]
+    files = [ ("fabsible/" + "/".join(x.parent.parts[3:]), ["/".join(x.parts)]) for x in Path('lib/fabsible/data').glob('**/*') if x.is_file() and '/.git/' not in str(x)]
+    #files = ["*"]
+    print(files)
+    return files
 
 setuptools.setup(
     name="fabsible",
@@ -21,13 +24,16 @@ setuptools.setup(
         "Operating System :: OS Independent",
     ],
     python_requires='>=3.6',
+    install_requires=[
+        'ansible >= 2.8'
+        ],
     scripts=[
       "bin/fabsible-hello",
       "bin/fabsible-hello2",
       "bin/fabsible-init",
+      "bin/fabsible-play",
     ],
-    package_data={
-        '': get_data_files(),
-        }
+    include_package_data = True,
+    data_files = get_data_files()
 
 )
