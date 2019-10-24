@@ -1,3 +1,15 @@
 [submodule "lib/fabsible/data/roles/exphost.provision"]
 	path = lib/fabsible/data/roles/exphost.provision
 	url = https://github.com/exphost/exphost.provision.git
+[submodule "lib/fabsible/data/roles/exphost.vars_merger"]
+	path = lib/fabsible/data/roles/exphost.vars_merger
+	url = https://github.com/exphost/exphost.vars_merger.git
+[submodule "lib/fabsible/data/roles/exphost.instances"]
+	path = lib/fabsible/data/roles/exphost.instances
+	url = https://github.com/exphost/exphost.instances.git
+[submodule "lib/fabsible/data/roles/exphost.universal_installer"]
+	path = lib/fabsible/data/roles/exphost.universal_installer
+	url = https://github.com/exphost/exphost.universal_installer.git
+[submodule "lib/fabsible/data/roles/exphost.default_filler"]
+	path = lib/fabsible/data/roles/exphost.default_filler
+	url = https://github.com/exphost/exphost.default_filler.git
