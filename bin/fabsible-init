@@ -5,7 +5,7 @@ import shutil
 import os
 
 if not os.path.exists("fabsible.cfg"):
-    shutil.copyfile(sys.prefix+"/fabsible/config/fabsible.cfg", "./fabsible.cfg")
+    shutil.copyfile(sys.prefix+"/fabsible/cfg/fabsible.cfg", "./fabsible.cfg")
 else:
     sys.exit("ERROR: fabsible already initialized")
 
