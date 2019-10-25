@@ -19,5 +19,4 @@
 - hosts:
   - all
   roles:
-    - exphost.common
     - exphost.universal_installer
