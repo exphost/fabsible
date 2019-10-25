@@ -2,9 +2,7 @@ import setuptools
 from pathlib import Path
 
 def get_data_files():
-    files = [ ("fabsible/" + "/".join(x.parent.parts[3:]), ["/".join(x.parts)]) for x in Path('lib/fabsible/data').glob('**/*') if x.is_file() and '/.git/' not in str(x)]
-    #files = ["*"]
-    print(files)
+    files = [ ("fabsible/" + "/".join(x.parent.parts[3:]), ["/".join(x.parts)]) for x in Path('lib/fabsible/data').glob('**/*') if x.is_file() and ('/.git/' not in str(x) and not str(x).endswith('.git'))]
     return files
 
 setuptools.setup(
