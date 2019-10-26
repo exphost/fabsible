@@ -26,8 +26,6 @@ setuptools.setup(
         'ansible >= 2.8'
         ],
     scripts=[
-      "bin/fabsible-hello",
-      "bin/fabsible-hello2",
       "bin/fabsible-init",
       "bin/fabsible-play",
     ],
