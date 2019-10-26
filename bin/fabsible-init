@@ -3,13 +3,37 @@ import fabsible
 import sys
 import shutil
 import os
+import argparse
+import configparser
 
-if not os.path.exists("fabsible.cfg"):
-    shutil.copyfile(sys.prefix+"/fabsible/cfg/fabsible.cfg", "./fabsible.cfg")
-else:
-    sys.exit("ERROR: fabsible already initialized")
+parser = argparse.ArgumentParser(description="Fabsible init")
+parser.add_argument("-i", "--inventory", dest='inventory_files', action='append', help="path to default inventory file. Can be user mutiple times", type=str, metavar='INVETORY_FILE')
+parser.add_argument("--force-reinit", dest='force_reinit', action='store_true', help="override existing config file")
 
-dirs = ["roles","group_vars", "examples"]
+args = parser.parse_args()
+
+# Load default configuration
+config = configparser.ConfigParser()
+config.read(sys.prefix+"/fabsible/cfg/fabsible.cfg")
+
+# Load existing configuration
+if os.path.exists("fabsible.cfg"):
+    config.read("fabsible.cfg")
+
+#
+# Set up options
+#
+
+# Set default inventory
+if args.inventory_files:
+    config['fabsible']['inventory_files'] = ",".join(args.inventory_files)
+
+# Save config
+with open("fabsible.cfg", "w") as f:
+    config.write(f)
+
+# Create default directories
+dirs = ["roles","group_vars"]
 for dir in dirs:
     if not os.path.exists(dir):
         os.mkdir(dir)
