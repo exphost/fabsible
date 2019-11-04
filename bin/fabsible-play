@@ -22,7 +22,10 @@ roles_path = ""
 if not 'defaults' in config:
     config.add_section("defaults")
 if 'roles_path' in config['defaults']:
-    roles_path = config['defaults']['roles_path'] + ":"
+    for role_path in config['defaults']['roles_path'].split(":"):
+        if not os.path.isabs(role_path):
+            roles_path += os.getcwd() +"/"+role_path+":"
+    roles_path+= config['defaults']['roles_path'] + ":"
 roles_path += sys.prefix+'/fabsible/roles'
 config['defaults']['roles_path'] = roles_path
 
