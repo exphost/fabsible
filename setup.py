@@ -35,7 +35,8 @@ setuptools.setup(
     ],
     python_requires='>=3.6',
     install_requires=[
-        'ansible >= 2.8'
+        'ansible >= 2.8',
+        'jmespath >= 0.9.4',
         ],
     scripts=[
       "bin/fabsible-init",
