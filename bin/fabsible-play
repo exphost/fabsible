@@ -40,10 +40,11 @@ ansible_cfg = tempfile.NamedTemporaryFile(mode="w", delete=not args.save_conf, s
 config.write(ansible_cfg)
 ansible_cfg.file.flush()
 env = {'ANSIBLE_CONFIG': ansible_cfg.name}
-cmd = "ansible-playbook -i {inventories} -D {playbook} {forward_arguments}".format(
+cmd = "ansible-playbook -i {inventories} -D {playbook} -e FABSIBLE_CWD={cwd} {forward_arguments}".format(
     playbook=sys.prefix+"/fabsible/playbooks/site.yml",
     forward_arguments=" ".join(unknowargs),
     inventories=" -i ".join(inventories),
+    cwd = os.getcwd(),
     )
 print("{env} {cmd}".format(
     env=env,
