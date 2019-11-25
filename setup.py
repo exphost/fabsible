@@ -11,7 +11,7 @@ def get_data_files():
 
 setuptools.setup(
     name="fabsible",
-    version="0.0.1",
+    version="0.0.2",
     author="TORGiren",
     author_email="exphost@fabrykowski.pl",
     description="Ansible framework using object-oriented configuration",
