@@ -1,9 +1,10 @@
 - hosts:
   - localhost
   gather_facts: False
-  roles:
-  - exphost.instances
-  post_tasks:
+  tasks:
+    - include_role:
+        name: exphost.instances
+      when: single_app is not defined
     - name: refresh inventory
       meta: refresh_inventory
 
@@ -11,10 +12,14 @@
   - all
   - localhost
   gather_facts: False
-  roles:
-    - exphost.vars_merger
-    - exphost.default_filler
-    - exphost.provision
+  tasks:
+    - include_role:
+        name: exphost.vars_merger
+    - include_role:
+        name: exphost.default_filler
+    - include_role:
+        name: exphost.provision
+      when: single_app is not defined
 
 - hosts:
   - all
