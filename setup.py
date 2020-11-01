@@ -11,7 +11,7 @@ def get_data_files():
 
 setuptools.setup(
     name="fabsible",
-    version="0.0.9",
+    version="0.1.0",
     author="TORGiren",
     author_email="exphost@fabrykowski.pl",
     description="Ansible framework using object-oriented configuration",
@@ -41,6 +41,7 @@ setuptools.setup(
     scripts=[
       "bin/fabsible-init",
       "bin/fabsible-play",
+      "bin/fabsible-clean",
     ],
     include_package_data = True,
     data_files = get_data_files()

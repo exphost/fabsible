@@ -1,0 +1,2 @@
+#!/bin/bash
+for i in terraform_tmp/*; do pushd $i; terraform destroy $@; popd;done
